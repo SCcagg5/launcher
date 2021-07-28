@@ -1,0 +1,137 @@
+{
+    "variables":{
+        "users":{
+            "domain_name":"str"
+        },
+        "system":{
+            "db_name": {
+                "type": "str",
+                "gen": "RANDOM"
+            },
+            "db_user":{
+                "type": "str",
+                "gen": "RANDOM"
+            },
+            "db_password":{
+                "type": "str",
+                "gen": "RANDOM"
+            },
+            "wp_table_prefix":{
+                "type": "str",
+                "gen": "RANDOM"
+            },
+            "virtual_port": {
+                "value": "8080"
+            },
+            "project_id":{
+                "type": "str",
+                "gen": "RANDOM"
+            },
+            "user_id":{
+                "type": "str",
+                "gen": "RANDOM"
+            }
+        },
+        "env":{
+            "email":"EMAIL"
+        }
+    },
+    "options":{
+        "theme":{
+            "storefront":{
+                "images":{
+
+                },
+                "features":{
+
+                },
+                "install":[
+                    [
+                        "x11",
+                        [
+                            "cp /source/wordpress/themes/storefront /project/{user_id}/{project_id}/html/"
+                        ]
+                    ]
+                ]
+            },
+            "responsive ":{
+                "images":{
+
+                },
+                "features":{
+
+                },
+                "install":[
+                    [
+                        "x11",
+                        [
+                            "cp /source/wordpress/themes/responsive /project/{user_id}/{project_id}/html/"
+                        ]
+                    ]
+                ]
+            },
+            "vantage":{
+                "images":{
+
+                },
+                "features":{
+
+                },
+                "install":[
+                    [
+                        "x11",
+                        [
+                            "cp /source/wordpress/themes/vantage /project/{user_id}/{project_id}/html/"
+                        ]
+                    ]
+                ]
+            },
+            "travelify":{
+                "images":{
+
+                },
+                "features":{
+
+                },
+                "install":[
+                    [
+                        "x11",
+                        [
+                            "cp /source/wordpress/themes/travelify /project/{user_id}/{project_id}/html/"
+                        ]
+                    ]
+                ]
+            }
+        }
+    },
+    "commands":[
+        [
+            "x01",
+            [
+                "mkdir -p /project/{user_id}",
+                "cp /source/wordpress/project /project/{user_id}/{project_id}"
+            ]
+        ],
+        [
+            "x02",
+            [
+                "echo -e {env} > /project/{user_id}/{project_id}/.env",
+                "echo -e {env} > /project/{user_id}/{project_id}/sample.env"
+            ]
+        ],
+        [
+            "x03",
+            [
+                "docker-compose up -d --build"
+            ]
+        ]
+    ],
+    "trad":{
+        "FR":{
+            "x01":"Création du projet",
+            "x02":"Création de l'environnement",
+            "x03":"Lancement du project",
+            "x11":"Installation de votre theme"
+        }
+    }
+}
