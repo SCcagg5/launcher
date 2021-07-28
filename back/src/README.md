@@ -2,7 +2,7 @@
 routes:
  
 ```pyhton
-    @app.route('/',                     ['OPTIONS', 'POST', 'GET'])
+    @app.route('/',                            ['OPTIONS', 'POST', 'GET'])
     @app.route('/service/<service>',           ['OPTIONS', 'GET']        )
     @app.route('/service/<service>',           ['OPTIONS', 'POST']       )
     @app.route('/setup/<setup_id>',             ['OPTIONS', 'GET']        )
